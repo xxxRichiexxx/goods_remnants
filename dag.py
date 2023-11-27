@@ -39,7 +39,7 @@ with DAG(
         'isc_dealer_sales',
         default_args=default_args,
         description='Получение данных из ИСК. Продажи дилеров.',
-        start_date=dt.datetime(2023, 11, 30),
+        start_date=dt.datetime(2023, 11, 20),
         schedule_interval='@daily',
         catchup=True,
         max_active_runs=1
@@ -64,13 +64,13 @@ with DAG(
             task_id='date_check',
             python_callable=date_check,
             op_kwargs={
-                # 'taskgroup': 'Загрузка_данных_в_stage_слой',
+                'taskgroup': 'Загрузка_данных_в_dm_слой',
                 },
         )
 
         do_nothing = DummyOperator(task_id='do_nothing')
-        monthly_task = 
-        daily_task = 
+        monthly_task = DummyOperator(task_id='monthly_task')
+        daily_task = DummyOperator(task_id='daily_task')
         collapse = DummyOperator(
             task_id='collapse',
             trigger_rule='none_failed',
