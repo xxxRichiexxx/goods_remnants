@@ -11,7 +11,7 @@ from airflow.operators.dummy import DummyOperator
 from airflow.contrib.operators.vertica_operator import VerticaOperator
 from airflow.operators.python import BranchPythonOperator
 
-from isc_etl.scripts.collable import etl, date_check
+from goods_remnants.scripts.collable import etl, date_check
 
 
 source_con = BaseHook.get_connection('isc')
