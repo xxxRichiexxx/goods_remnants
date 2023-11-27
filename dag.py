@@ -36,7 +36,7 @@ default_args = {
     'retry_delay': dt.timedelta(minutes=30),
 }
 with DAG(
-        'isc_dealer_sales',
+        'isc_goods_remnants',
         default_args=default_args,
         description='Получение данных из ИСК. Продажи дилеров.',
         start_date=dt.datetime(2023, 11, 20),
