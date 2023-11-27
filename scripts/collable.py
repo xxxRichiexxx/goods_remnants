@@ -69,7 +69,7 @@ def load(dwh_engine, data, execution_date):
         print(data)
 
         command = f"""
-            DELETE *
+            DELETE
             FROM sttgaz.stage_isc_goods_remnants
             WHERE load_date = '{execution_date}';
         """
