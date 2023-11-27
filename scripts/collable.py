@@ -12,7 +12,7 @@ def extract(source_engine, next_execution_date):
     with open(
         fr'/home/da/airflow/dags/goods_remnants/scripts/get_data.sql', 'r'
     ) as f:
-        command = f.read().format(next_execution_date)
+        command = f.read().format(next_execution_date=next_execution_date)
 
     print(command)
 
