@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS sttgaz.stage_isc_goods_remnants;
 CREATE TABLE sttgaz.stage_isc_goods_remnants (
     status VARCHAR(300)
     ,VidTovaraPoDivisionu VARCHAR(300)
+    ,Division VARCHAR
     ,ZaiavkaVerhnegoUrovnia_NapravlenieRealizacii VARCHAR(500)
     ,PrognozRealizacii VARCHAR(1000)
     ,Zaiavka_Pokupatel  VARCHAR(500)
@@ -32,6 +33,7 @@ DROP TABLE IF EXISTS sttgaz.dm_isc_goods_remnants;
 CREATE TABLE sttgaz.dm_isc_goods_remnants (
     status VARCHAR(300)
     ,VidTovaraPoDivisionu VARCHAR(300)
+    ,Division VARCHAR
     ,ZaiavkaVerhnegoUrovnia_NapravlenieRealizacii VARCHAR(500)
     ,PrognozRealizacii VARCHAR(1000)
     ,Zaiavka_Pokupatel  VARCHAR(500)

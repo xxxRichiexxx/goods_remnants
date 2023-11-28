@@ -32,6 +32,7 @@ def transform(data, next_execution_date):
     data.columns = [
         "status",
         "VidTovaraPoDivisionu",
+        "Division",
         "ZaiavkaVerhnegoUrovnia_NapravlenieRealizacii",
         "PrognozRealizacii",
         "Zaiavka_Pokupatel",
