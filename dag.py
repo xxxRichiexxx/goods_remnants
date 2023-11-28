@@ -39,7 +39,7 @@ with DAG(
         'isc_goods_remnants',
         default_args=default_args,
         description='Получение данных из ИСК. Продажи дилеров.',
-        start_date=dt.datetime(2023, 11, 20),
+        start_date=dt.datetime(2023, 10, 31),
         schedule_interval='@daily',
         catchup=True,
         max_active_runs=1
