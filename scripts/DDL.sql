@@ -16,7 +16,7 @@ CREATE TABLE sttgaz.stage_isc_goods_remnants (
     ,PriznakRezervirovaniya  VARCHAR(500)
     ,ModelniyGod_Periodicheskiy  INT
     ,GosudarstvenniyContract_IGK VARCHAR(500)
-    ,Defect  VARCHAR(500)
+    ,Defect  VARCHAR(1000)
     ,Kolichestvo INT 
     ,StoimostHraneniyaSNDS  VARCHAR(300)
     ,StoimostHraneniyaBezNDS  VARCHAR(500)
@@ -47,7 +47,7 @@ CREATE TABLE sttgaz.dm_isc_goods_remnants (
     ,PriznakRezervirovaniya  VARCHAR(500)
     ,ModelniyGod_Periodicheskiy  INT
     ,GosudarstvenniyContract_IGK VARCHAR(500)
-    ,Defect  VARCHAR(500)
+    ,Defect  VARCHAR(1000)
     ,Kolichestvo INT 
     ,StoimostHraneniyaSNDS  VARCHAR(300)
     ,StoimostHraneniyaBezNDS  VARCHAR(500)

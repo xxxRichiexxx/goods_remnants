@@ -69,8 +69,17 @@ with DAG(
         )
 
         do_nothing = DummyOperator(task_id='do_nothing')
-        monthly_task = DummyOperator(task_id='monthly_task')
-        daily_task = DummyOperator(task_id='daily_task')
+        monthly_task = VerticaOperator(
+            task_id='monthly_task',
+            vertica_conn_id='vertica',
+            sql='scripts/monthly_task.sql',
+        )
+        daily_task = VerticaOperator(
+            task_id='daily_task',
+            vertica_conn_id='vertica',
+            sql='scripts/daily_task.sql',
+        )
+
         collapse = DummyOperator(
             task_id='collapse',
             trigger_rule='none_failed',
