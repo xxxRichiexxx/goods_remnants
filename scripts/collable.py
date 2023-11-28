@@ -23,7 +23,7 @@ def extract(source_engine, next_execution_date):
     )
 
 
-def transform(data, execution_date):
+def transform(data, next_execution_date):
     """Преобразование/трансформация данных."""
 
     print('ТРАНСФОРМАЦИЯ ДАННЫХ')
@@ -56,11 +56,11 @@ def transform(data, execution_date):
         "DataPrihodaNaSkladGotovogoAM",     
     ]
 
-    data['load_date'] = execution_date
+    data['load_date'] = next_execution_date
     return data
 
 
-def load(dwh_engine, data, execution_date):
+def load(dwh_engine, data, next_execution_date):
     """Загрузка данных в хранилище."""
 
     print('ЗАГРУЗКА ДАННЫХ')
@@ -71,7 +71,7 @@ def load(dwh_engine, data, execution_date):
         command = f"""
             DELETE
             FROM sttgaz.stage_isc_goods_remnants
-            WHERE load_date = '{execution_date}';
+            WHERE load_date = '{next_execution_date}';
         """
         print(command)
 
@@ -95,8 +95,8 @@ def etl(source_engine, dwh_engine, **context):
     next_execution_date = context['next_execution_date'].date()
 
     data = extract(source_engine, next_execution_date)
-    data = transform(data, execution_date)
-    load(dwh_engine, data, execution_date)
+    data = transform(data, next_execution_date)
+    load(dwh_engine, data, next_execution_date)
 
 
 def date_check(taskgroup, **context):
