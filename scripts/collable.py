@@ -12,7 +12,7 @@ def extract(source_engine, month):
     with open(
         fr'/home/da/airflow/dags/goods_remnants/scripts/get_data.sql', 'r'
     ) as f:
-        command = f.read().format(next_execution_date=month)
+        command = f.read().format(month=month)
 
     print(command)
 
