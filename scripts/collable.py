@@ -4,7 +4,7 @@ import datetime as dt
 from sqlalchemy import text
 
 
-def extract(source_engine, next_execution_date):
+def extract(source_engine, month):
     """Извлечение данных из источника."""
 
     print('ИЗВЛЕЧЕНИЕ ДАННЫХ')
@@ -12,7 +12,7 @@ def extract(source_engine, next_execution_date):
     with open(
         fr'/home/da/airflow/dags/goods_remnants/scripts/get_data.sql', 'r'
     ) as f:
-        command = f.read().format(next_execution_date=next_execution_date)
+        command = f.read().format(next_execution_date=month)
 
     print(command)
 
@@ -92,19 +92,17 @@ def load(dwh_engine, data, next_execution_date):
 def etl(source_engine, dwh_engine, **context):
     """Запускаем ETL-процесс для заданного типа данных."""
 
-    execution_date = context['execution_date'].date()
     next_execution_date = context['next_execution_date'].date()
+    month = context['next_execution_date'].date().replace(day=1)
 
-    data = extract(source_engine, next_execution_date)
+    data = extract(source_engine, month)
     data = transform(data, next_execution_date)
     load(dwh_engine, data, next_execution_date)
 
 
 def date_check(taskgroup, **context):
-    next_execution_date = context['next_execution_date'].date()
-    if next_execution_date.day == 1:
-        return taskgroup + '.' + 'monthly_task'
-    elif next_execution_date.day > 1 and next_execution_date.day <=15:
+    next_execution_date = context['next_execution_date'].date().replace(day=1)
+    if next_execution_date.day >= 1 and next_execution_date.day <= 15:
         return taskgroup + '.' + 'daily_task'
     return taskgroup + '.' + 'do_nothing'
 

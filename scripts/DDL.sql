@@ -59,4 +59,5 @@ CREATE TABLE sttgaz.dm_isc_goods_remnants (
     ,load_date DATE
 );
 
+GRANT SELECT ON TABLE sttgaz.dm_isc_goods_remnants TO PowerBI_Integration WITH GRANT OPTION;
 
