@@ -54,7 +54,9 @@ def transform(data, next_execution_date):
         "PokupatelIzZaiavkiVerhnegoUrovnia",
         "Sklad",
         "VidSklada",
-        "DataPrihodaNaSkladGotovogoAM",     
+        "DataPrihodaNaSkladGotovogoAM",
+        "tovar",
+        "comment_HT",     
     ]
 
     data['load_date'] = next_execution_date
